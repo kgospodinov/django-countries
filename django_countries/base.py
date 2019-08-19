@@ -1,14 +1,13 @@
-from django_countries.conf import settings
-
 def _(x):
     return x
 
-if settings.COUNTRIES_TRANSLATE:
-    try:
+try:
+    from django_countries.conf import settings
+    if settings.COUNTRIES_TRANSLATE:
         from django.utils.translation import ugettext_lazy as _
-    except ImportError:  # pragma: no cover
-        # Allows this module to be executed without Django installed.
-        pass
+except ImportError:  # pragma: no cover
+    # Allows this module to be executed without Django installed.
+    pass
 
 
 class CountriesBase(object):
