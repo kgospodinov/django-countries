@@ -20,13 +20,21 @@ import glob
 import os
 
 from django_countries.base import CountriesBase
+from django_countries.conf import settings
+
+def _t(x):
+    return x
 
 try:
     from django.utils.translation import ugettext_lazy as _
 except ImportError:  # pragma: no cover
     # Allows this module to be executed without Django installed.
-    def _(x):
-        return x
+    _ = _t
+
+
+if not settings.COUNTRIES_TRANSLATE:
+    _ = _t
+
 
 
 # Nicely titled (and translatable) country names.
