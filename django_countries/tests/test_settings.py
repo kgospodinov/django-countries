@@ -31,10 +31,6 @@ class TestSettings(TestCase):
             self.assertIn("AU", countries)
             self.assertEqual(countries.name("AU"), "Desert")
 
-    def test_translate_disabled(self):
-        with self.settings(COUNTRIES_TRANSLATE=False, COUNTRIES={"BG": base._("Bulgaria")}):
-            self.assertEqual(countries.name("BG"), "Bulgaria")
-
     def test_common_names(self):
         common_code, common_name = list(base.CountriesBase.COMMON_NAMES.items())[0]
         common_name = six.text_type(common_name)
