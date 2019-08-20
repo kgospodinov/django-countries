@@ -102,7 +102,7 @@ class Settings(AppSettings):
 
     COUNTRIES_TRANSLATE = True
     """
-    Whether to use the translate country name.  
+    Whether to use the translated country name.  
     """
 
 
